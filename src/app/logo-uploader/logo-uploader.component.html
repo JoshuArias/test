@@ -1,0 +1,43 @@
+<div class="logo-buttons-container">
+    <button (click)="openModal('principal')">Logo Principal</button>
+    <button (click)="openModal('pdf')">Logo PDF</button>
+    <button (click)="openModal('wkst')">Logo WKST</button>
+  </div>
+  
+  <div class="logos">
+    <div>
+      <img *ngIf="logoPrincipal" [src]="logoPrincipal" alt="Logo Principal" class="logo-img">
+    </div>
+    <div>
+      <img *ngIf="logoPdf" [src]="logoPdf" alt="Logo PDF" class="logo-img">
+    </div>
+    <div>
+      <img *ngIf="logoWkst" [src]="logoWkst" alt="Logo WKST" class="logo-img">
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <!-- Modal -->
+  <div *ngIf="showModal" class="modal">
+    <div class="modal-contenido">
+      <div class="modal-header">
+        <h3>Asignación de Foto</h3>
+      </div>
+      <div class="modal-body">
+        <label class="file-upload-label">
+          SELECCIONAR
+          <input type="file" (change)="onFileSelected($event)" class="file-upload-input" />
+        </label>
+        <div *ngIf="temporaryImage" class="image-preview">
+          <img [src]="temporaryImage" alt="Vista previa de la imagen" />
+        </div>
+      </div>
+      <div class="modal-buttons">
+        <button (click)="saveImage()" class="btn-save">GUARDAR</button>
+        <button (click)="closeModal()" class="btn-close">CANCELAR</button>
+      </div>
+    </div>
+  </div>
+  
+
+
