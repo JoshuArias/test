@@ -1,0 +1,172 @@
+
+ <div class="contenedor-principal">
+<div class="formulario-container">
+    <form (ngSubmit)="onSubmit()" #formulario="ngForm" class="form-container">
+      <div>
+      <div>
+        <div style="max-width: 50%;" class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input class="fnombre" type="text" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+        </div>
+        <div style="max-width: 40%;" class="form-group">
+          <label for="persona">Persona:</label>
+          <select id="persona" name="persona" [(ngModel)]="persona" required>
+            <option value="fisica">Física</option>
+            <option value="moral">Moral</option>
+          </select>
+        </div>
+        <div  style="max-width: 40%;" class="form-group">
+          <label for="rfc">RFC:</label>
+          <input type="text" id="rfc" name="rfc" [(ngModel)]="rfc" required>
+        </div>
+      </div>
+    </div>
+      <div>
+        <div class="apoderados-container">
+          <div class="row-formulario">
+          <div class="apoderado-row">
+            <div class="apoderado">
+              <label>Apoderado:</label>
+              <input class="apoderado-input" type="text" name="apoderado1Nombre" [(ngModel)]="apoderado1Nombre" placeholder="Nombre">
+            </div>
+             <div class="apoderados">
+            <label>RFC:</label>
+            <input class="rfcinput" type="text" name="apoderado1Rfc" [(ngModel)]="apoderado1Rfc" placeholder="RFC">
+          </div>
+        </div>
+        </div>
+          <div class="apoderado-row">
+            <div class="apoderado">
+              <label>Apoderado:</label>
+              <input class="apoderado-input" type="text" name="apoderado2Nombre" [(ngModel)]="apoderado2Nombre" placeholder="Nombre">
+            </div>
+            <div class="apoderados">
+              <label>RFC:</label>
+              <input class="rfcinput" type="text" name="apoderado2Rfc" [(ngModel)]="apoderado2Rfc" placeholder="RFC">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+  
+  <aside>
+    <div class="logo-uploader-container">
+      <app-logo-uploader></app-logo-uploader>
+    </div>
+  </aside>
+</div>
+
+<div class="direccion-card">
+  <div class="header-container">
+    <button (click)="abrirModal()" class="agregar-btn">
+      <img src="assets/marcas-de-verificacion.png" alt="Icono" width="40" height="40">
+      Agregar Dirección
+    </button>
+  </div>
+
+  
+  <div class="direccion-container">
+    <div class="direccion-card" *ngFor="let dir of direcciones">
+      <div class="direccion-detalle">
+        <div class="direccion-item">
+          <p>Dirección:</p> {{ dir.direccion }}
+          <p>Colonia:</p> {{ dir.colonia }}
+        </div>
+        <div class="direccion-item">
+          <p>No. Exterior:</p> {{ dir.numeroExterior }} 
+          <p>Municipio:</p> {{ dir.municipio }}  
+        </div>
+        <div class="direccion-item">
+          <p>No. Interior:</p> {{ dir.numeroInterior }}
+          <p>Estado:</p> {{ dir.estado }}
+        </div>
+        <div class="direccion-item">
+          <p>Código Postal:</p> {{ dir.codigoPostal }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div *ngIf="mostrarModal" class="modal">
+  <div class="modal-contenido">
+    <h3>Dirección</h3>
+    
+    
+    <form #formulario="ngForm" (ngSubmit)="guardarDireccion()" novalidate>
+      
+      <div class="fila">
+        <div class="columna input-container">
+          <input type="text" id="nombreInput" [(ngModel)]="nombre" name="nombre" required placeholder=" ">
+          <label for="nombreInput" class="floating-label">Nombre <span class="required">*</span></label>
+        </div>
+        <div class="input-container">
+          <select id="tipoInput" [(ngModel)]="tipo" name="tipo" required>
+            <option value="" disabled selected hidden></option>
+            <option value="departamento">Departamento</option>
+            <option value="casa">Casa</option>
+          </select>
+          <label for="tipoInput" class="floating-label">Tipo <span>*</span></label>
+        </div>
+      </div>
+
+      
+      <div class="fila">
+        <div class="columna input-container">
+          <input type="text" id="direccionInput" [(ngModel)]="direccion" name="direccion" required placeholder=" ">
+          <label for="direccionInput" class="floating-label">Dirección <span class="required">*</span></label>
+        </div>
+        <div class="columna input-container">
+          <input type="text" id="numeroExteriorInput" [(ngModel)]="numeroExterior" name="numeroExterior" required placeholder=" ">
+          <label for="numeroExteriorInput" class="floating-label">No. Externo <span class="required">*</span></label>
+        </div>
+        <div class="columna input-container">
+          <input type="text" id="numeroInteriorInput" [(ngModel)]="numeroInterior" name="numeroInterior" placeholder=" ">
+          <label for="numeroInteriorInput" class="floating-label">No. Interno</label>
+        </div>
+      </div>
+
+      
+      <div class="fila">
+        <div class="columna input-container">
+          <input type="text" id="codigoPostalInput" [(ngModel)]="codigoPostal" name="codigoPostal" required placeholder=" ">
+          <label for="codigoPostalInput" class="floating-label">Código Postal <span class="required">*</span></label>
+        </div>
+        <div class="input-container">
+          <select id="coloniaInput" [(ngModel)]="colonia" name="colonia" required>
+            <option value="" disabled selected hidden></option>
+            <option value="centro">Centro</option>
+            <option value="mitras">Mitras</option>
+          </select>
+          <label for="coloniaInput" class="floating-label">Colonia <span>*</span></label>
+        </div>
+      </div>
+
+      
+      <div class="fila">
+        <div class="columna input-container">
+          <input type="text" id="estadoInput" [(ngModel)]="estado" name="estado" required placeholder=" ">
+          <label for="estadoInput" class="floating-label">Estado <span class="required">*</span></label>
+        </div>
+        <div class="columna input-container">
+          <input type="text" id="municipioInput" [(ngModel)]="municipio" name="municipio" required placeholder=" ">
+          <label for="municipioInput" class="floating-label">Municipio <span class="required">*</span></label>
+        </div>
+        <div class="columna input-container">
+          <input type="text" id="paisInput" [(ngModel)]="pais" name="pais" required placeholder=" ">
+          <label for="paisInput" class="floating-label">País <span class="required">*</span></label>
+        </div>
+      </div>
+
+      <div class="modal-buttons">
+        <button type="submit" [disabled]="formulario.invalid">Grabar</button>
+        <button type="button" (click)="cerrarModal()">Cerrar</button>
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -3,17 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // Si usas [(ngModel)]
 import { AppComponent } from './app.component';
 import { LogoUploaderComponent } from './logo-uploader/logo-uploader.component';
+import { FormularioDireccionComponent } from './formulario-direccion/formulario-direccion.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent, 
-    LogoUploaderComponent
+    LogoUploaderComponent,
+    FormularioDireccionComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule, // Importa FormsModule si usas [(ngModel)]
+    FormsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

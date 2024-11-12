@@ -1,27 +1,21 @@
 .logo-buttons-container {
   display: flex;
   justify-content: space-between;
-  /* Espacio uniforme entre los botones */
+  
 }
 
 .logo-buttons-container button {
   background-color: transparent;
-  /* Sin fondo */
   border: none;
-  /* Sin borde */
   color: #5798dd;
-  /* Color azul */
   font-size: 16px;
-  /* Tamaño de fuente */
   cursor: pointer;
   padding: 0;
-  /* Sin padding */
   font-weight: bold;
 }
 
 .logo-buttons-container button:hover {
   text-decoration: underline;
-  /* Subrayado al pasar el cursor */
 }
 
 
@@ -156,12 +150,10 @@ h3 {
 
 .file-upload-input {
   display: none;
-  /* Oculta el input de archivo real */
 }
 
 .file-upload-label:hover {
   background-color: #303f9f;
-  /* Color más oscuro para el hover */
 }
 
 .image-preview {
@@ -190,14 +182,14 @@ h3 {
 
 .btn-close {
   background-color: white;
-  color: #3f51b5; /* Color azul similar a los otros botones */
+  color: #3f51b5; 
   font-weight: bold;
   padding: 10px 20px;
-  border: none; /* Elimina el borde */
+  border: none; 
   cursor: pointer;
 }
 
 .btn-close:hover {
-  background-color: #f5f5f5; /* Ligero cambio de fondo en hover */
-  color: #303f9f; /* Cambio de color de texto en hover */
+  background-color: #f5f5f5; 
+  color: #303f9f; 
 }
