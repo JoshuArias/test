@@ -1,24 +1,38 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // Si usas [(ngModel)]
-import { AppComponent } from './app.component';
-import { LogoUploaderComponent } from './logo-uploader/logo-uploader.component';
-import { FormularioDireccionComponent } from './formulario-direccion/formulario-direccion.component';
-
+import { FormsModule, ReactiveFormsModule} from '@angular/forms'; 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    LogoUploaderComponent,
-    FormularioDireccionComponent
+    
+    
   ],
   imports: [
+    MatButtonToggleModule,
+    MatNativeDateModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    CommonModule,
     BrowserModule,
     FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+  
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }

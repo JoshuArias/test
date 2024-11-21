@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,12 +9,14 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule]
 })
 export class LogoUploaderComponent {
+  @Input() imageUrls: string[] = [];
+  @Input() logoPrincipal: string | null = null;
+  @Input() logoPdf: string | null = null;
+  @Input() logoWkst: string | null = null;
+
   showModal: boolean = false;
   selectedLogoType: string = '';
-  temporaryImage: string | ArrayBuffer | null = null; 
-  logoPrincipal: string | ArrayBuffer | null = null;
-  logoPdf: string | ArrayBuffer | null = null;
-  logoWkst: string | ArrayBuffer | null = null;
+  temporaryImage: string | ArrayBuffer | null = null;
 
   openModal(type: string) {
     this.selectedLogoType = type;
@@ -23,7 +25,7 @@ export class LogoUploaderComponent {
 
   closeModal() {
     this.showModal = false;
-    this.temporaryImage = null; 
+    this.temporaryImage = null;
   }
 
   onFileSelected(event: Event) {
@@ -31,7 +33,7 @@ export class LogoUploaderComponent {
     if (input.files && input.files[0]) {
       const reader = new FileReader();
       reader.onload = () => {
-        this.temporaryImage = reader.result; 
+        this.temporaryImage = reader.result;
       };
       reader.readAsDataURL(input.files[0]);
     }
@@ -39,13 +41,13 @@ export class LogoUploaderComponent {
 
   saveImage() {
     if (this.selectedLogoType === 'principal') {
-      this.logoPrincipal = this.temporaryImage;
+      this.logoPrincipal = this.temporaryImage as string || '';
     } else if (this.selectedLogoType === 'pdf') {
-      this.logoPdf = this.temporaryImage;
+      this.logoPdf = this.temporaryImage as string || '';
     } else if (this.selectedLogoType === 'wkst') {
-      this.logoWkst = this.temporaryImage;
+      this.logoWkst = this.temporaryImage as string || '';
     }
-    this.showModal = false; 
-    this.temporaryImage = null; 
+    this.showModal = false;
+    this.temporaryImage = null;
   }
 }
